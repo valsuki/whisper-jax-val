@@ -40,9 +40,9 @@ from transformers.modeling_flax_outputs import (
     FlaxSeq2SeqLMOutput,
     FlaxSeq2SeqModelOutput,
 )
-from transformers.modeling_flax_utils import (
+from modeling_flax_utils_jax import (
     ACT2FN,
-    FlaxPreTrainedModel,
+    FlaxPreTrainedModelJax,
     append_call_sample_docstring,
     append_replace_return_docstrings,
     overwrite_call_docstring,
@@ -66,7 +66,7 @@ _CONFIG_FOR_DOC = "WhisperConfig"
 
 
 WHISPER_START_DOCSTRING = r"""
-    This model inherits from [`FlaxPreTrainedModel`]. Check the superclass documentation for the generic methods the
+    This model inherits from [`FlaxPreTrainedModelJax`]. Check the superclass documentation for the generic methods the
     library implements for all its models (such as downloading or saving, resizing the input embeddings, pruning heads
     etc.) This model is also a Flax Linen
     [flax.nn.Module](https://flax.readthedocs.io/en/latest/_autosummary/flax.nn.module.html) subclass. Use it as a
@@ -80,14 +80,14 @@ WHISPER_START_DOCSTRING = r"""
     Parameters:
         config ([`WhisperConfig`]): Model configuration class with all the parameters of the model.
             Initializing with a config file does not load the weights associated with the model, only the
-            configuration. Check out the [`~FlaxPreTrainedModel.from_pretrained`] method to load the model weights.
+            configuration. Check out the [`~Jax.from_pretrained`] method to load the model weights.
         dtype (`jax.numpy.dtype`, *optional*, defaults to `jax.numpy.float32`):
             The data type of the computation. Can be one of `jax.numpy.float32`, `jax.numpy.float16` (on GPUs) and
             `jax.numpy.bfloat16` (on TPUs). This can be used to enable mixed-precision training or half-precision
             inference on GPUs or TPUs. If specified all the computation will be performed with the given `dtype`.
             **Note that this only specifies the dtype of the computation and does not influence the dtype of model
-            parameters.** If you wish to change the dtype of the model parameters, see [`~FlaxPreTrainedModel.to_fp16`]
-            and [`~FlaxPreTrainedModel.to_bf16`].
+            parameters.** If you wish to change the dtype of the model parameters, see [`~FlaxPreTrainedModelJax.to_fp16`]
+            and [`~FlaxPreTrainedModelJax.to_bf16`].
 """
 
 WHISPER_INPUTS_DOCSTRING = r"""
@@ -988,7 +988,7 @@ class FlaxWhisperModule(nn.Module):
         return self.decoder
 
 
-class FlaxWhisperPreTrainedModel(FlaxPreTrainedModel):
+class FlaxWhisperPreTrainedModel(FlaxPreTrainedModelJax):
     config_class = WhisperConfig
     base_model_prefix: str = "model"
     main_input_name = "input_features"

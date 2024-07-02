@@ -87,8 +87,9 @@ class FlaxWhisperPipline:
 
         self.model, self.params = FlaxWhisperForConditionalGeneration.from_pretrained(
             self.checkpoint,
-            _do_init=False,
+            _do_init=True,
             dtype=self.dtype,
+            from_pt=True
         )
 
         self.max_length = max_length if max_length is not None else self.model.generation_config.max_length
@@ -190,7 +191,8 @@ class FlaxWhisperPipline:
             output_ids = self.p_generate(
                 freeze(self.params), shard(input_features), forced_decoder_ids, return_timestamps
             ).sequences
-            output_ids = jax.device_get(output_ids.reshape(-1, self.max_length))
+            #output_ids = jax.device_get(output_ids.reshape(-1, self.max_length))
+            output_ids = jax.device_get(output_ids.reshape(-1, output_ids.size))
         else:
             # pjit handles replication / gathering for us auto-magically
             output_ids = self.p_generate(
