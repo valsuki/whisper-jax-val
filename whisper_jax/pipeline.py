@@ -52,7 +52,7 @@ logical_axis_rules_dp = (
 )
 
 
-class FlaxWhisperPipline:
+class FlaxWhisperPipeline:
     def __init__(
         self,
         checkpoint="openai/whisper-large-v2",
@@ -307,7 +307,7 @@ class FlaxWhisperPipline:
             # better integration
             if not ("sampling_rate" in inputs and "array" in inputs):
                 raise ValueError(
-                    "When passing a dictionary to FlaxWhisperPipline, the dict needs to contain an 'array' key "
+                    "When passing a dictionary to FlaxWhisperPipeline, the dict needs to contain an 'array' key "
                     "containing the numpy array representing the audio, and a 'sampling_rate' key "
                     "containing the sampling rate associated with the audio array."
                 )

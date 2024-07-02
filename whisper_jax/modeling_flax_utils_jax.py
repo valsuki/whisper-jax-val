@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-# Modifications made by Valerii Garnaga/Suki AI, Inc. on [Date]:
+# Modifications made by Valerii Garnaga/Suki AI, Inc. on Jul 1, 2024:
 # - Rename file modeling_flax_utils.py to modeling_flax_utils_jax.py
 # - Rename class FlaxPreTrainedModel to FlaxPreTrainedModelJax
 #
