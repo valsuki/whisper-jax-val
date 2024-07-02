@@ -40,7 +40,7 @@ from transformers.modeling_flax_outputs import (
     FlaxSeq2SeqLMOutput,
     FlaxSeq2SeqModelOutput,
 )
-from modeling_flax_utils_jax import (
+from .modeling_flax_utils_jax import (
     ACT2FN,
     FlaxPreTrainedModelJax,
     append_call_sample_docstring,
