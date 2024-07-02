@@ -36,11 +36,11 @@ from flax.serialization import from_bytes, to_bytes
 from flax.traverse_util import flatten_dict, unflatten_dict
 from jax.random import PRNGKey
 
-from .configuration_utils import PretrainedConfig
-from .dynamic_module_utils import custom_object_save
-from .generation import FlaxGenerationMixin, GenerationConfig
-from .modeling_flax_pytorch_utils import load_pytorch_checkpoint_in_flax_state_dict
-from .utils import (
+from transformers.configuration_utils import PretrainedConfig
+from transformers.dynamic_module_utils import custom_object_save
+from transformers.generation import FlaxGenerationMixin, GenerationConfig
+from transformers.modeling_flax_pytorch_utils import load_pytorch_checkpoint_in_flax_state_dict
+from transformers.utils import (
     FLAX_WEIGHTS_INDEX_NAME,
     FLAX_WEIGHTS_NAME,
     WEIGHTS_INDEX_NAME,
@@ -57,7 +57,7 @@ from .utils import (
     logging,
     replace_return_docstrings,
 )
-from .utils.hub import convert_file_size_to_int, get_checkpoint_shard_files
+from transformers.utils.hub import convert_file_size_to_int, get_checkpoint_shard_files
 
 
 logger = logging.get_logger(__name__)
